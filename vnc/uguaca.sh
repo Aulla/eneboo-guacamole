@@ -1,7 +1,7 @@
 #!/bin/sh
 clear
 if [ $# -ne 3 ]; then echo Faltan Argumentos. Ejemplo:  
-echo ./ustorm.sh 1 demo passworddemo
+echo ./uguaca.sh 1 demo passworddemo
 echo  1 .- es el puerto vnc 9501 , 2 sería 9502 ...  
 echo demo .- seria usuario login web.
 echo passworddemo .- sería password login web.
@@ -21,6 +21,15 @@ echo Por favor introduce esto como password : "'$3'"
 echo si no es el mismo en interface no conectaría
 vncpasswd
 echo Gracias.
+
+#Instalamos la instancia en crontab
+
+`which crontab` -l > ./microntab 2>/dev/null
+echo "@reboot $USER vncserver :$1" >> ./microntab
+`which crontab` microntab
+rm ./microntab
+
+
 echo Configurado usuario en interface web
 #echo Sacando copia para trabajar
 rm user-mapping.xml.temporal
@@ -46,8 +55,8 @@ cat user-mapping.xml.temporal > /etc/guacamole/user-mapping.xml
 #rm ./user-mapping.xml.temporal
 echo Creando enlace a traspaso 
 rm -R $HOME/.Guacamole
-mkdir /var/lib/tomcat6/webapps/guaca/traspaso/$2
-ln -s /var/lib/tomcat6/webapps/guaca/traspaso/$2 $HOME/.Guacamole
+mkdir /var/lib/tomcat6/webapps/guacamole/traspaso/$2
+ln -s /var/lib/tomcat6/webapps/guacamole/traspaso/$2 $HOME/.Guacamole
 echo Listo.Recuerde modificar $HOME/.vnc/xstartup con la ruta correcta del ejecutable eneboo
 fi
 
