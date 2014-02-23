@@ -1,0 +1,8 @@
+0.1
+Versión incial
+0.2
+Se lanza la descarga directamente al pulsar imprimir.
+Eliminados botones recoger e imprimir.
+
+
+
