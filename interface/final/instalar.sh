@@ -10,36 +10,7 @@ cp guacamole.war ../final
 cd ../final
 echo Listo , ahora a instalar
 
-#echo Limpiando ...
 
-#rm -R /etc/guacamole
-#rm -R /var/lib/guacamole
-#rm -R /var/lib/tomcat6/webapps/gua*
-#rm /var/lib/tomcat6/common/classes/guacamole.properties
-#echo Creando estructura ..
-#mkdir /etc/guacamole
-#mkdir /var/lib/guacamole
-#SO=`uname -m`
-#echo Instalando DEBS $SO
-
-#rm ./deb
-
-# Detectamos si es 32 o 64 bits.
-#if [ $SO = "i686" ]
-#then
-        # 32 bits
-#        ln -s ./deb32 ./deb
-
-
-#elif [ $SO = "x86_64" ]
-#then
-	#64 bits
-#        ln -s ./deb64 ./deb
-
-#fi
-#dpkg -i ./deb/*.deb
-#cp ./guacamole.properties /etc/guacamole/
-#cp ./user-mapping.xml /etc/guacamole/
 chmod 777 /etc/guacamole/user-mapping.xml
 cp ./guacamole.war /var/lib/guacamole/guacamole.war
 ln -s /var/lib/guacamole/guacamole.war /var/lib/tomcat6/webapps/guacamole.war
