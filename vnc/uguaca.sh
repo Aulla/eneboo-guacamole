@@ -22,12 +22,12 @@ echo si no es el mismo en interface no conectaría
 vncpasswd
 echo Gracias.
 
-#Instalamos la instancia en crontab
+#Instalamos la instancia en crontab (no funciona aun)
 
-`which crontab` -l > ./microntab 2>/dev/null
-echo "@reboot $USER vncserver :$1" >> ./microntab
-`which crontab` microntab
-rm ./microntab
+#`which crontab` -l > ./microntab 2>/dev/null
+#echo "@reboot $USER vncserver -geometry 1200x900 -deferUpdate 60 -rfbwait 50 :$1" >> ./microntab
+#`which crontab` microntab
+#rm ./microntab
 
 
 echo Configurado usuario en interface web
@@ -51,12 +51,7 @@ echo '</authorize>' >> ./user-mapping.xml.temporal
 echo "</user-mapping>" >> ./user-mapping.xml.temporal
 #echo Sustituyendo fichero con nueva configuración
 cat user-mapping.xml.temporal > /etc/guacamole/user-mapping.xml
-#echo Borrado fichero temporal
-#rm ./user-mapping.xml.temporal
-echo Creando enlace a traspaso 
-rm -R $HOME/.Guacamole
-mkdir /var/lib/tomcat6/webapps/guacamole/traspaso/$2
-ln -s /var/lib/tomcat6/webapps/guacamole/traspaso/$2 $HOME/.Guacamole
+rm ./user-mapping.xml.temporal
 echo Listo.Recuerde modificar $HOME/.vnc/xstartup con la ruta correcta del ejecutable eneboo
 fi
 
